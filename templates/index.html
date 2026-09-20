@@ -2,29 +2,34 @@
 <html>
 <head>
     <title>JOKENPÔ</title>
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
         body{
             text-align: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #a5d6a7, #90caf9, #ef9a9a);
             margin: 0;
             padding: 40px 20px;
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 42px;
             color: #222;
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         h2 {
             color: #555;
             font-size: 20px;
             margin-bottom: 25px;
+            font-weight: 500;
         }
 
         .jogo {
-            background-color: white;
+            background: linear-gradient(135deg, #ffffff, #f3e5f5);
             width: 600px;
             max-width: 90%;
             margin: 0 auto;
@@ -41,9 +46,10 @@
             border: none;
             border-radius: 12px;
             color: white;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
+            font-family: 'Poppins', sans-serif;
         }
 
         button:hover {
@@ -65,22 +71,64 @@
             color: white;
         }
 
+        button[name="reiniciar"] {
+            background: linear-gradient(135deg, #e53935, #1e88e5, #43a047);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
         h3 {
             font-size: 24px;
             color: #333;
             margin-top: 30px;
+            font-weight: 600;
         }
 
         .placar {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 25px;
             margin: 20px 0;
         }
 
         .pontuaçao {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: 600;
+            background: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            min-width: 120px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            border: 2px solid #d8b4fe;
+        }
+
+        .resultado {
+            background: white;
+            padding: 12px 20px;
+            margin: 12px auto;
+            border-radius: 12px;
+            max-width: 450px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .mensagem {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            padding: 15px 20px;
+            margin: 20px auto;
+            border-radius: 15px;
+            max-width: 450px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .fim {
+            background: linear-gradient(135deg, #ede7f6, #e1bee7);
+            padding: 10px 20px;
+            border-radius: 15px;
+            display: inline-block;
         }
 
         p {
@@ -108,7 +156,7 @@
 
         {% else %}
 
-        <h3>FIM DE JOGO!</h3>
+        <h3 class="fim">FIM DE JOGO!</h3>
 
         <form action="/" method="POST">
             <button name="reiniciar" value="sim">JOGAR NOVAMENTE</button>
@@ -135,13 +183,23 @@
 
     {% if escolha_jogador %}
 
-    <p>VOCÊ ESCOLHEU: {{ escolha_jogador.upper() }}</p>
-    <p>COMPUTADOR ESCOLHEU: {{ escolha_computador.upper() }}</p>
-    <p>{{ resultado }}</p>
+    <div class="resultado">
+        VOCÊ ESCOLHEU: {{ escolha_jogador.upper() }}
+    </div>
+
+    <div class="resultado">
+        COMPUTADOR ESCOLHEU: {{ escolha_computador.upper() }}
+    </div>
+
+    <div class="resultado">
+        {{ resultado }}
+    </div>
 
     {% else %}
 
-    <p>Escolha uma opção para começar!</p>
+    <div class="mensagem">
+        Escolha uma opção para começar!
+    </div>
 
     {% endif %}
 
